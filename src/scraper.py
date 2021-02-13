@@ -17,36 +17,9 @@ class WDCBWebScraper:
 		return response.text
 
 	@staticmethod
-	def parse_date_string(date_string):
-		return datetime.strptime(date_string, "%A - %B %d, %Y")
+	def parse_date_string(date_string):		
 		try:
-			# Parse Year from date_str_long
-			year = date_str_long.split(', ')[1]
-
-			# Parse Month string and convert it to integer
-			# Ex. January=1, February=2			
-			month_str = date_str_long.split(' - ')[1].split(' ')[0]
-			months_to_ints = {
-				"January": 1,
-				"February": 2,
-				"March": 3,
-				"April": 4,
-				"May": 5,
-				"June": 6,
-				"July": 7,
-				"August": 8,
-				"September": 9,
-				"October": 10,
-				"November": 11,
-				"December": 12
-			}
-			month = str(months_to_ints[month_str]).zfill(2)
-
-			# Parse Day
-			day = date_str_long.split(' ')[3].replace(',','')
-
-			return f'{year}-{month}-{day}'
-
+			return datetime.strptime(date_string, "%A - %B %d, %Y")
 		except:
 			print("date_str_long not valid")
 
