@@ -1,4 +1,4 @@
-from abc import ABC
+from datetime import datetime
 
 from bs4 import BeautifulSoup
 import requests
@@ -17,7 +17,8 @@ class WDCBWebScraper:
 		return response.text
 
 	@staticmethod
-	def parse_date_string(date_str_long):
+	def parse_date_string(date_string):
+		return datetime.strptime(date_string, "%A - %B %d, %Y")
 		try:
 			# Parse Year from date_str_long
 			year = date_str_long.split(', ')[1]
@@ -79,8 +80,7 @@ class WDCBWebScraper:
 			values = [ele.text.strip() for ele in values]
 
 			# Transform data record
-			record = WDCBWebScraper.transform_data_record(values[0])
-			# import pdb; pdb.set_trace()	
+			record = WDCBWebScraper.transform_data_record(values[0])	
 			record['date'] = date_str			
 			data.append(record)
 		self.playlist_data = data
