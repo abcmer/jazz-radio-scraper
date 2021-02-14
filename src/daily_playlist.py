@@ -105,5 +105,4 @@ class WCDBDailyPlaylist:
 
 if __name__ == '__main__':
 	playlist = WCDBDailyPlaylist('2021-02-13')
-	asdg
 
