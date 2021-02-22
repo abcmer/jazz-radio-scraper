@@ -1,6 +1,6 @@
 # jazz-radio-scraper
 
-jazz-radio-scraper is simple python package for scraping daily playlists from https://wdcb.org/, Chicago's Home for Jazz.
+jazz-radio-scraper is simple python package for scraping daily playlists from https://wdcb.org/ Chicago's Home for Jazz.
 
 ## Built With
 
