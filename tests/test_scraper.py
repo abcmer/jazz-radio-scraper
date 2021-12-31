@@ -5,6 +5,7 @@ def test_date_parser():
 	assert date_str == '2021-02-09'
 
 def test_scraper():
-	dates = ["2021-02-09", "2021-02-10", "2021-02-11", "2021-02-12", "2021-02-13"]
+	dates = ["2021-12-30"]
 	for date in dates:
-		playlist = WCDBDailyPlaylist(date)		
+		playlist = WCDBDailyPlaylist(date)	
+		print(date, playlist)

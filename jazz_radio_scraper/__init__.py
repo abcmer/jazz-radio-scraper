@@ -50,41 +50,39 @@ class WCDBDailyPlaylist:
             dj_name = None
             set_timeframe = None
 
-        # Find and clean table data values
-        values = row.find_all('td')
-        values = [ele.text.strip() for ele in values]
-        record_raw = values[0]
+            # Find and clean table data values
+            values = row.find_all('td')
+            values = [ele.text.strip() for ele in values]
+            record_raw = values[0]
 
-        # Conditional check of record type
-        # Records are either of type song or djSet
+            # Conditional check of record type
+            # Records are either of type song or djSet
 
-        # Check for dj set
-        if '\t\t\t\t\t\t\t\t' in values[0]:
-            dj_name = WCDBDailyPlaylist.parse_dj_name(record_raw)
-            set_name = WCDBDailyPlaylist.parse_set_name(record_raw)
-            set_timeframe = WCDBDailyPlaylist.parse_set_timeframe(record_raw)
+            # Check for dj set
+            if '\t\t\t\t\t\t\t\t' in values[0]:
+                dj_name = WCDBDailyPlaylist.parse_dj_name(record_raw)
+                set_name = WCDBDailyPlaylist.parse_set_name(record_raw)
+                set_timeframe = WCDBDailyPlaylist.parse_set_timeframe(record_raw)
 
-        # Else record is type song
-        # Parse song details
-        else:
-            time = WCDBDailyPlaylist.parse_time_from_songplay_record(record_raw)
-            title = WCDBDailyPlaylist.parse_title_from_songplay_record(record_raw)
-            artist = WCDBDailyPlaylist.parse_artist_from_songplay_record(record_raw)
-            album = WCDBDailyPlaylist.parse_album_from_songplay_record(record_raw)
-
-
-            # Update details of empty record
-            playlist_data.append({
-                'date': date_str,
-                'time': time,
-                'dj_name': dj_name,
-                'set_name': set_name or None,
-                'set_timeframe': set_timeframe,
-                'title': title,
-                'artist': artist,
-                'album': album					
-                })
-            return playlist_data
+            # Else record is type song
+            # Parse song details
+            else:
+                time = WCDBDailyPlaylist.parse_time_from_songplay_record(record_raw)
+                title = WCDBDailyPlaylist.parse_title_from_songplay_record(record_raw)
+                artist = WCDBDailyPlaylist.parse_artist_from_songplay_record(record_raw)
+                album = WCDBDailyPlaylist.parse_album_from_songplay_record(record_raw)
+                # Update details of empty record
+                playlist_data.append({
+                    'date': date_str,
+                    'time': time,
+                    'dj_name': dj_name,
+                    'set_name': set_name or None,
+                    'set_timeframe': set_timeframe,
+                    'title': title,
+                    'artist': artist,
+                    'album': album					
+                    })
+        return playlist_data
       
 
     @staticmethod
