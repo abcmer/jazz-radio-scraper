@@ -45,11 +45,6 @@ class WCDBDailyPlaylist:
         rows = table.find_all('tr')
         playlist_data = []
         for row in rows:
-            # Initialize a new empty record
-            set_name = None
-            dj_name = None
-            set_timeframe = None
-
             # Find and clean table data values
             values = row.find_all('td')
             values = [ele.text.strip() for ele in values]

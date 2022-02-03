@@ -1,4 +1,4 @@
-from jazz_radio_scraper import WCDBDailyPlaylist
+from jazz_radio_scraper.scraper import WCDBDailyPlaylist
 
 def test_date_parser():
 	date_str = WCDBDailyPlaylist.parse_date_string('Tuesday - February 09, 2021')
